@@ -17,3 +17,8 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    oauth_access_token: null
+    oauth_access_token_secret: null
+    consumer_key: null
+    consumer_secret: null

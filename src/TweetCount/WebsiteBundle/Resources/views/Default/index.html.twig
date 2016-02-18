@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_start(form) }}
+        {{ form_widget(form.url) }}
+    {{ form_end(form) }}
+
+    <p>
+    {% if response is not null and response.error is not defined %}
+        shared: {{ response.twitter.shared }}
+        favorite: {{ response.twitter.favorited }}
+    {% endif %}
+    </p>
+</div>
+{% endblock %}

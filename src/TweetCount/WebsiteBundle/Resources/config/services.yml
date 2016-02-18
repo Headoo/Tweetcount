@@ -1,0 +1,4 @@
+services:
+#    tweet_count_website.example:
+#        class: TweetCount\WebsiteBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
