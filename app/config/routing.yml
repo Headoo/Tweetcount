@@ -1,6 +1,3 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
 tweet_count_website:
     resource: "@TweetCountWebsiteBundle/Resources/config/routing.yml"
     prefix:   /
