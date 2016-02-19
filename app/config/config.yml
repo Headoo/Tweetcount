@@ -67,3 +67,10 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+headoo_media_social_api:
+    twitter_access:
+        oauth_access_token: %oauth_access_token%
+        oauth_access_token_secret: %oauth_access_token_secret%
+        consumer_key: %consumer_key%
+        consumer_secret: %consumer_secret%
