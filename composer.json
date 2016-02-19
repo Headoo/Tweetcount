@@ -1,6 +1,8 @@
 {
     "name": "root/tweetcount",
-    "license": "proprietary",
+    "description": "tweetcount.io website",
+    "license": "MIT",
+    "minimum-stability": "dev",
     "type": "project",
     "autoload": {
         "psr-4": {
@@ -26,7 +28,8 @@
         "symfony/monolog-bundle": "^2.8",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "^2.0"
+        "incenteev/composer-parameter-handler": "^2.0",
+        "headoo/media-social-api-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
