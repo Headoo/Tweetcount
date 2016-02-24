@@ -4,18 +4,19 @@ namespace TweetCount\ApiBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use TweetCount\ApiBundle\Form\UrlType;
+use Symfony\Component\HttpFoundation\Request;
+use TweetCount\ApiBundle\Form\Type\TweetCountUrlType;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $form = $this->createForm(new UrlType(), null, array(
+        $form = $this->createForm(TweetCountUrlType::class, null, array(
             'method'          => 'GET',
             'csrf_protection' => false
         ));
 
-        $form->handleRequest($this->getRequest());
+        $form->handleRequest($request);
 
         if ($form->isValid()) {
             try {
