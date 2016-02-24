@@ -1,19 +1,21 @@
 <?php
 
-namespace TweetCount\ApiBundle\Form;
+namespace TweetCount\ApiBundle\Form\Type;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 
-class UrlType extends AbstractType
+class TweetCountUrlType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('url', 'url', array(
+        $builder->add('url', UrlType::class, array(
             'required' => true
         ));
 
-        $builder->add('apikey', 'text', array(
+        $builder->add('apikey', TextType::class, array(
             'required' => true
         ));
     }
