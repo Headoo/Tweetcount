@@ -18,6 +18,12 @@ $loader->unregister();
 $apcLoader->register(true);
 */
 
+// This to avoid function not defined when in production. See Symfony\Component\VarDumper\VarDumper;
+if (!function_exists('dump')) {
+    function dump(){}
+}
+
+
 $kernel = new AppKernel('prod', false);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);

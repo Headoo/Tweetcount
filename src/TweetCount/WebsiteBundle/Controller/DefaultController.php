@@ -44,7 +44,7 @@ class DefaultController extends Controller
                 // Call internal api
                 $url = $this->generateUrl('tweet_count_api_url', array(), true);
                 $url.= '?' . http_build_query($params);
-
+                dump($url);
                 $curl = curl_init($url);
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
                 $response = curl_exec($curl);

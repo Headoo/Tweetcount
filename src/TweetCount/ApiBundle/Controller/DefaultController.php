@@ -12,46 +12,28 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-        // $form = $this->createForm(UrlType::class, null, array(
-        $form = $this->createForm( TCUrlType::class, null, array(
-            'method'          => 'GET',
-            'csrf_protection' => false
-        ));
+    
+        $manager  = $this->get('headoo.twitter.tweet_manager');
+        $response = $manager->searchTweetWithURL(urldecode($request->get('url')), 100);
 
-        $form->handleRequest($request);
+        if ($response !== null) {
+            $shared   = count($response->statuses);
+            $favorite = 0;
 
-        if ($form->isValid()) {
-            try {
-                $manager  = $this->get('headoo.twitter.tweet_manager');
-                $response = $manager->searchTweetWithURL($form->get('url')->getData(), 100);
-
-                if ($response !== null) {
-                    $shared   = count($response->statuses);
-                    $favorite = 0;
-
-                    foreach ($response->statuses as $item) {
-                        if ($item->favorited === true) {
-                            $favorite++;
-                        }
-                    }
-                } else {
-                    $shared = $favorite = 0;
+            foreach ($response->statuses as $item) {
+                if ($item->favorited === true) {
+                    $favorite++;
                 }
-
-                $data = array('twitter' => array(
-                    'shared'    => $shared,
-                    'favorited' => $favorite
-                ));
-            } catch (\Exception $e) {
-                $data = array('error' => $e->getMessage());
-                error_log($e->getMessage());
-                error_log($e->getTraceAsString());
             }
         } else {
-            $data = array('error' => 'Bad parameters');
-
+            $shared = $favorite = 0;
         }
 
-        return new JsonResponse();
+        $data = array('twitter' => array(
+            'shared'    => $shared,
+            'favorited' => $favorite
+        ));
+
+        return new JsonResponse($data);
     }
 }
