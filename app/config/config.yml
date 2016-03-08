@@ -74,3 +74,5 @@ headoo_media_social_api:
         oauth_access_token_secret: %oauth_access_token_secret%
         consumer_key: %consumer_key%
         consumer_secret: %consumer_secret%
+    instagram_access:
+        access_token: ""

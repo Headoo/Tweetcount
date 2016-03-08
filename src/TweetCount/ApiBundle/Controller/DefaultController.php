@@ -2,16 +2,18 @@
 
 namespace TweetCount\ApiBundle\Controller;
 
+use Doctrine\Tests\Models\Tweet\Tweet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use TweetCount\ApiBundle\Form\TCUrlType;
 use Symfony\Component\HttpFoundation\Request;
-use TweetCount\ApiBundle\Form\Type\TweetCountUrlType;
 
 class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $form = $this->createForm(TweetCountUrlType::class, null, array(
+        // $form = $this->createForm(UrlType::class, null, array(
+        $form = $this->createForm( TCUrlType::class, null, array(
             'method'          => 'GET',
             'csrf_protection' => false
         ));
@@ -47,8 +49,9 @@ class DefaultController extends Controller
             }
         } else {
             $data = array('error' => 'Bad parameters');
+
         }
 
-        return new JsonResponse($data);
+        return new JsonResponse();
     }
 }
