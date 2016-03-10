@@ -6,12 +6,20 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
 {
-    public function testIndex()
+
+    private $container;
+
+   public function setUp()
     {
-        $client = static::createClient();
+        self::bootKernel();
 
-        $crawler = $client->request('GET', '/hello/Fabien');
+        $this->container = self::$kernel->getContainer();
+    }
 
-        $this->assertTrue($crawler->filter('html:contains("Hello Fabien")')->count() > 0);
+
+
+    public function testTweetManager() {
+        $manager  = $this->container->get('headoo.twitter.tweet_manager');
+        $response = $manager->getStatsForTweetWithURL(urldecode("http://google.com"), 100);
     }
 }

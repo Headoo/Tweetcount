@@ -14,7 +14,9 @@ class DefaultController extends Controller
     {
     
         $manager  = $this->get('headoo.twitter.tweet_manager');
-        $response = $manager->searchTweetWithURL(urldecode($request->get('url')), 100);
+        dump(urldecode($request->get('url')));
+
+        $response = $manager->getStatsForTweetWithURL(urldecode($request->get('url')), 100);
 
         if ($response !== null) {
             $shared   = count($response->statuses);
