@@ -20,6 +20,6 @@ class DefaultControllerTest extends WebTestCase
 
     public function testTweetManager() {
         $manager  = $this->container->get('headoo.twitter.tweet_manager');
-        $response = $manager->getStatsForTweetWithURL(urldecode("http://google.com"), 100);
+        $response = $manager->getStatsForTweetWithURL("http://google.com");
     }
 }
