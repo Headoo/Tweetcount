@@ -18,24 +18,7 @@ class DefaultController extends Controller
 
         $response = $manager->getStatsForTweetWithURL(urldecode($request->get('url')), 100);
 
-        if ($response !== null) {
-            $shared   = count($response->statuses);
-            $favorite = 0;
 
-            foreach ($response->statuses as $item) {
-                if ($item->favorited === true) {
-                    $favorite++;
-                }
-            }
-        } else {
-            $shared = $favorite = 0;
-        }
-
-        $data = array('twitter' => array(
-            'shared'    => $shared,
-            'favorited' => $favorite
-        ));
-
-        return new JsonResponse($data);
+        return new JsonResponse($response);
     }
 }
