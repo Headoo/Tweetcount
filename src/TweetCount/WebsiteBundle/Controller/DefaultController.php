@@ -4,7 +4,8 @@ namespace TweetCount\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;   // Symfony3
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 
 class DefaultController extends Controller
@@ -16,9 +17,9 @@ class DefaultController extends Controller
         $response = null;
         // $request  = $this->getRequest(); Symfony2
         $form     = $this->createFormBuilder()
-            ->add('url', UrlType::class , array(
+            ->add('url', TextType::class , array(
                 'attr' => array(
-                    'placeholder' => 'http://www.example.com',
+                    'placeholder' => 'ef0bdd815d2a39741c4c30842b7f9488',
                     'class' => 'input-lg'
                 )
             ))
@@ -51,7 +52,6 @@ class DefaultController extends Controller
                 curl_close($curl);
 
                 $debug .= " ; URL:$url";
-                dump($response);
 
                 if ($response !== null) {
                     $response = json_decode($response);
