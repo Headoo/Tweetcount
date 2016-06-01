@@ -12,13 +12,8 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-    
         $manager  = $this->get('headoo.twitter.tweet_manager');
-        dump(urldecode($request->get('url')));
-
-        $response = $manager->getStatsForTweetWithURL(urldecode($request->get('url')), 100);
-
-
+        $response = $manager->getCounts(urldecode($request->get('url')), 100);
         return new JsonResponse($response);
     }
 }
